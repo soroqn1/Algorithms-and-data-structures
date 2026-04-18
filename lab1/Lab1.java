@@ -1,64 +1,67 @@
-import java.util.Random;
-import java.util.Scanner;
+class IntStack {
+    private int[] elements;
+    private int top;
+
+    public IntStack(int size) {
+        elements = new int[size];
+        top = -1;
+    }
+
+    public boolean isFull() {
+        return top == elements.length - 1;
+    }
+
+    public boolean isEmpty() {
+        return top == -1;
+    }
+
+    public boolean push(int value) {
+        if (isFull()) {
+            return false;
+        }
+        elements[++top] = value;
+        return true;
+    }
+
+    public int pop() {
+        if (isEmpty()) {
+            throw new RuntimeException("Стек порожній");
+        }
+        return elements[top--];
+    }
+
+    public void printStack() {
+        if (isEmpty()) {
+            System.out.println("Стек порожній");
+            return;
+        }
+        for (int i = top; i >= 0; i--) {
+            System.out.print(elements[i] + " ");
+        }
+        System.out.println();
+    }
+}
 
 public class Lab1 {
     public static void main(String[] args) {
         System.out.println("Розробник: Сорочан Ярослав Сергійович");
         System.out.println("Варіант 11\n");
 
-        int[][] A = new int[3][3];
-        Random random = new Random();
+        IntStack stack = new IntStack(5);
 
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                A[i][j] = random.nextInt(100); 
-            }
-        }
+        stack.push(10);
+        stack.push(20);
+        stack.push(30);
+        stack.push(40);
 
-        System.out.println("- матриця А:");
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                System.out.printf("%4d", A[i][j]);
-            }
-            System.out.println();
-        }
+        System.out.print("Початковий стан стеку: ");
+        stack.printStack();
 
-        Scanner scanner = new Scanner(System.in);
-        int i = -1;
-        int j = -1;
+        System.out.println("\nВидаляємо 2 елементи:");
+        System.out.println("Видалено: " + stack.pop());
+        System.out.println("Видалено: " + stack.pop());
 
-        while (true) {
-            System.out.print("\nВведіть номер рядка i (від 0 до 2): ");
-            if (scanner.hasNextInt()) {
-                i = scanner.nextInt();
-                if (i >= 0 && i < 3) {
-                    break;
-                } else {
-                    System.out.println("Помилка: індекс рядка має бути від 0 до 2.");
-                }
-            } else {
-                System.out.println("Помилка: введіть ціле число.");
-                scanner.next(); 
-            }
-        }
-
-        while (true) {
-            System.out.print("Введіть номер стовпця j (від 0 до 2): ");
-            if (scanner.hasNextInt()) {
-                j = scanner.nextInt();
-                if (j >= 0 && j < 3) {
-                    break;
-                } else {
-                    System.out.println("Помилка: індекс стовпця має бути від 0 до 2.");
-                }
-            } else {
-                System.out.println("Помилка: введіть ціле число.");
-                scanner.next(); 
-            }
-        }
-
-        System.out.println("\n- значення a_ij матриці А: " + A[i][j]);
-
-        scanner.close();
+        System.out.print("\nСтек після видалення: ");
+        stack.printStack();
     }
 }
