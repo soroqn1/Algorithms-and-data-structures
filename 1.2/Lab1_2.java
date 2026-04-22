@@ -72,7 +72,7 @@ class HashTable {
     }
 }
 
-public class Lab2 {
+public class Lab1_2 {
     public static void main(String[] args) {
         System.out.println("Розробник: Сорочан Ярослав Сергійович");
         System.out.println("Варіант 11 (Лабораторна робота 1.2)\n");

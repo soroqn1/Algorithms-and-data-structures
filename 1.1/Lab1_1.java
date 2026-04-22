@@ -42,10 +42,10 @@ class IntStack {
     }
 }
 
-public class Lab1 {
+public class Lab1_1 {
     public static void main(String[] args) {
         System.out.println("Розробник: Сорочан Ярослав Сергійович");
-        System.out.println("Варіант 11\n");
+        System.out.println("Варіант 11, Лабораторна робота 1.1\n");
 
         IntStack stack = new IntStack(5);
 
